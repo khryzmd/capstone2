@@ -62,9 +62,9 @@ module.exports.loginUser = (req, res) => {
 			const isPasswordCorrect = bcrypt.compareSync(req.body.password, result.password);
 
 			if(isPasswordCorrect){
-				return res.send({ access: auth.createAccessToken(result) })
+				return res.status(200).send({ access: auth.createAccessToken(result) })
 			} else {
-				return res.send({
+				return res.status(401).send({
 					error: "Email and password do not match"
 				});
 			}
@@ -78,7 +78,7 @@ module.exports.getDetails = (req, res) => {
 	return User.findById(req.user.id)
 	.then(user => {
 		if(!user){
-			return res.status(403).send({ error: "User not found" })
+			return res.status(404).send({ error: "User not found" })
 		} else {
 			user.password = "";
 			return res.status(200).send({
@@ -101,11 +101,11 @@ module.exports.setAsAdmin = async (req, res) => {
 		user.isAdmin = true;
 		await user.save();
 
-		return res.send({
+		return res.status(200).send({
 			updatedUser: user
 		});
 	} catch (err) {
-		return res.send({
+		return res.status(500).send({
 					error: "Failed in Find",
 					details: err
 		})

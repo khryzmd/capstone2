@@ -29,5 +29,4 @@ router.patch("/:productId/activate", verify, verifyAdmin, productController.acti
 
 
 // Export Route System
-// Allows us to export the "router" object that will be accessed in our "index.js" file
 module.exports = router;
