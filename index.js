@@ -6,7 +6,7 @@ const session = require('express-session');
 require('./passport.js');
 /*const cors = require("cors");*/
 const userRoutes = require("./routes/user");
-/*const productRoutes = require("./routes/product");*/
+const productRoutes = require("./routes/product");
 
 // Environment Setup
 require("dotenv").config();
@@ -45,7 +45,7 @@ mongoose.connection.once('open', () => console.log("Now connected to MongoDB Atl
 
 // Backend Routes
 app.use("/users", userRoutes);
-/*app.use("/products", productRoutes);*/
+app.use("/products", productRoutes);
 
 // Server Gateway Response
 if(require.main === module) {

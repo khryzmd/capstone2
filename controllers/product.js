@@ -72,7 +72,7 @@ module.exports.updateProduct = (req, res)=>{
         price: req.body.price
     }
 
-    return Product.findByIdAndUpdate(req.params.productId, updatedProduct, {new=true})
+    return Product.findByIdAndUpdate(req.params.productId, updatedProduct, {new: true})
     .then(product => {
         if (product) {
             res.status(200).send({
