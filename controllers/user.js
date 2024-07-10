@@ -82,7 +82,7 @@ module.exports.getDetails = (req, res) => {
 		} else {
 			user.password = "";
 			return res.status(200).send({
-				user: user;
+				user: user
 			});
 		}  
 	})
@@ -101,11 +101,11 @@ module.exports.setAsAdmin = async (req, res) => {
 		user.isAdmin = true;
 		await user.save();
 
-		res.send({
-			updatedUser: user;
+		return res.send({
+			updatedUser: user
 		});
 	} catch (err) {
-		res.send({
+		return res.send({
 					error: "Failed in Find",
 					details: err
 		})
@@ -120,7 +120,7 @@ module.exports.updatePassword = async (req, res) => {
 		const { newPassword } = req.body;
 
     const { id } = req.user; 
-    
+
     const hashedPassword = await bcrypt.hash(newPassword, 10);
 
     await User.findByIdAndUpdate(id, { password: hashedPassword });
