@@ -47,7 +47,7 @@ mongoose.connection.once('open', () => console.log("Now connected to MongoDB Atl
 // Backend Routes
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
-app.use("/carts", cartRoutes);
+app.use("/cart", cartRoutes);
 
 // Server Gateway Response
 if(require.main === module) {
