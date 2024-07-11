@@ -15,5 +15,11 @@ router.post("/add-to-cart", verify, cartController.addToCart);
 // Route for changing product quantities in cart
 router.patch("/update-cart-quantity", verify, cartController.updateCartQuantity);
 
+// Route for removing item from cart
+router.patch("/:productId/remove-from-cart", verify, cartController.removeFromCart);
+
+// Route for clearing cart
+router.put("/clear-cart", verify, cartController.clearCart);
+
 // Export Route System
 module.exports = router;
