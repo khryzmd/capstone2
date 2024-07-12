@@ -53,7 +53,7 @@ app.use("/b3/orders", orderRoutes);
 
 // Server Gateway Response
 if(require.main === module) {
-	app.listen(process.env.PORT || 4001, () => console.log(`API is now online on port ${process.env.PORT || 4001}`));
+	app.listen(process.env.PORT || 4003, () => console.log(`API is now online on port ${process.env.PORT || 4003}`));
 }
 
 module.exports = { app, mongoose };
