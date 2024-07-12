@@ -12,7 +12,7 @@ module.exports.createAccessToken = (user) => {
 		isAdmin: user.isAdmin
 	}
 
-	return jwt.sign(data, process.env.AUTH_SECRET_KEY, {});
+	return jwt.sign(data, "ECommerceAPI", {});
 }
 
 // Token Verification
@@ -27,7 +27,7 @@ module.exports.verify = (req, res, next) => {
 		console.log(token);
 
 		// Token decryption
-		jwt.verify(token, process.env.AUTH_SECRET_KEY, function(err, decodedToken){
+		jwt.verify(token, "ECommerceAPI", function(err, decodedToken){
 			if(err){
 				return res.status(403).send({
 					auth: "Failed",

@@ -42,7 +42,7 @@ app.use(passport.initialize());
 app.use(passport.session());*/
 
 // Connecting to MongoDB Atlas
-mongoose.connect(process.env.MONGODB_STRING);
+mongoose.connect("mongodb+srv://dabukhryzmiel:admin@cluster0.u4ecesk.mongodb.net/e-commerce-api?retryWrites=true&w=majority&appName=Cluster0");
 mongoose.connection.once('open', () => console.log("Now connected to MongoDB Atlas"));
 
 // Backend Routes
