@@ -1,6 +1,5 @@
 // Dependencies and Modules
 const Cart = require("../models/Cart");
-const User = require("../models/User");
 const { errorHandler } = require("../auth");
 
 // Retrieve user's cart

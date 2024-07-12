@@ -8,6 +8,7 @@ require('./passport.js');
 const userRoutes = require("./routes/user");
 const productRoutes = require("./routes/product");
 const cartRoutes = require("./routes/cart");
+const orderRoutes = require("./routes/order");
 
 // Environment Setup
 require("dotenv").config();
@@ -48,6 +49,7 @@ mongoose.connection.once('open', () => console.log("Now connected to MongoDB Atl
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
 app.use("/cart", cartRoutes);
+app.use("/orders", orderRoutes);
 
 // Server Gateway Response
 if(require.main === module) {

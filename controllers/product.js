@@ -1,6 +1,5 @@
 // Dependencies and Modules
 const Product = require("../models/Product");
-const User = require("../models/User");
 const { errorHandler } = require("../auth");
 
 // Create a product
