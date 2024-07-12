@@ -1,7 +1,7 @@
 // Dependencies and Modules
 const express = require("express");
 const userController = require("../controllers/user");
-const passport = require('passport');
+// const passport = require('passport');
 const { verify, isLoggedIn, verifyAdmin } = require("../auth.js");
 
 // Routing Component
@@ -16,7 +16,7 @@ router.post("/login", userController.loginUser);
 // Route for retrieving user details
 router.get("/details", verify, userController.getDetails);
 
-//  Google Login
+/*//  Google Login
 //  Route for initiating the Google OAuth consent screen
 router.get('/google',
 	passport.authenticate('google', {
@@ -58,7 +58,7 @@ router.get("/logout", (req, res) => {
 			})
 		}
 	})
-})
+})*/
 
 // PATCH route for setting user as admin
 router.patch('/:id/set-as-admin', verify, verifyAdmin, userController.setAsAdmin);

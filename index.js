@@ -1,9 +1,9 @@
 // Dependencies and Modules
 const express = require("express");
 const mongoose = require("mongoose");
-const passport = require('passport');
-const session = require('express-session');
-require('./passport.js');
+// const passport = require('passport');
+// const session = require('express-session');
+// require('./passport.js');
 /*const cors = require("cors");*/
 const userRoutes = require("./routes/user");
 const productRoutes = require("./routes/product");
@@ -32,14 +32,14 @@ app.use(express.urlencoded({extended: true}));
 app.use(cors(corsOptions));*/
 
 // Google Login
-app.use(session({
+/*app.use(session({
 	secret: process.env.clientSecret,
 	resave: false,
 	saveUninitialized: false
 }));
 
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session());*/
 
 // Connecting to MongoDB Atlas
 mongoose.connect(process.env.MONGODB_STRING);
