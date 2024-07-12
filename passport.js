@@ -8,7 +8,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 passport.use(new GoogleStrategy({
 	clientID: process.env.clientID,
 	clientSecret: process.env.clientSecret,
-	callbackURL: "http://localhost:4000/users/google/callback",
+	callbackURL: "http://ec2-13-59-17-101.us-east-2.compute.amazonaws.com/b3/users/google/callback",
 	passReqToCallback: true
 },
 // Callback function gets executed when a user is successfully authenticated
