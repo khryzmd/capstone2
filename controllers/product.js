@@ -17,6 +17,7 @@ module.exports.addProduct = (req, res) => {
         } else {
             return newProduct.save()
             .then(result => res.status(201).send({
+                message: "Product successfully added",
                 product: result
             }))
             .catch(err => errorHandler(err, req, res));

@@ -12,7 +12,8 @@ module.exports.getCart = (req, res) => {
             });
         }
         return res.status(200).send({
-            cart: cart
+            message: "Cart successfully fetched",
+            cart
         });
     })
     .catch(err => {
@@ -34,13 +35,15 @@ module.exports.addToCart = async (req, res) => {
         }
 
         let cartItemIndex = existingCart.cartItems.findIndex(item => item.productId === req.body.productId);
-
+        // if there is an existing item
         if (cartItemIndex !== -1) {
             existingCart.cartItems[cartItemIndex].quantity += req.body.quantity;
             existingCart.cartItems[cartItemIndex].subtotal = existingCart.cartItems[cartItemIndex].quantity * req.body.price;
         } else {
             existingCart.cartItems.push({
                 productId: req.body.productId,
+                name: req.body.name,
+                price: req.body.price,
                 quantity: req.body.quantity,
                 subtotal: req.body.quantity * req.body.price
             });
@@ -80,6 +83,8 @@ module.exports.updateCartQuantity = async (req, res) => {
         } else {
             existingCart.cartItems.push({
                 productId: req.body.productId,
+                name: req.body.name,
+                price: req.body.price,
                 quantity: req.body.quantity,
                 subtotal: req.body.quantity * req.body.price
             });
@@ -115,8 +120,9 @@ module.exports.removeFromCart = async (req, res) => {
             });
         }
 
-        let cartItem = existingCart.cartItems.find(item => item.productId === req.params.productId);
 
+        let cartItem = existingCart.cartItems.find(item => item.productId === req.params.productId);
+        console.log(cartItem);
         if (cartItem) {
             existingCart.cartItems = existingCart.cartItems.filter(item => item.productId !== req.params.productId);
         } else {

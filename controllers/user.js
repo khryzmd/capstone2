@@ -65,7 +65,7 @@ module.exports.loginUser = (req, res) => {
 				return res.status(200).send({ access: auth.createAccessToken(result) })
 			} else {
 				return res.status(401).send({
-					error: "Email and password do not match"
+					message: "Incorrect email or password"
 				});
 			}
 		}
@@ -114,8 +114,8 @@ module.exports.setAsAdmin = async (req, res) => {
 };
 
 
-// Controller function to update the user password
-module.exports.updatePassword = async (req, res) => {
+// Controller function to reset the user password
+module.exports.resetPassword = async (req, res) => {
 	try {
 		const { newPassword } = req.body;
 
@@ -131,4 +131,28 @@ module.exports.updatePassword = async (req, res) => {
   	res.status(500).json({ message: 'Internal server error' });
   }
 };
+
+
+// Controller function to update the user profile
+module.exports.updateProfile = async (req, res) => {
+	try {
+    // Get the user ID from the authenticated token
+		const userId = req.user.id;
+
+    // Retrieve the updated profile information from the request body
+		const { firstName, lastName, mobileNo } = req.body;
+
+    // Update the user's profile in the database
+		const updatedUser = await User.findByIdAndUpdate(
+			userId,
+			{ firstName, lastName, mobileNo },
+			{ new: true }
+			);
+
+		res.json(updatedUser);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: 'Failed to update profile' });
+	}
+}
 

@@ -63,8 +63,11 @@ router.get("/logout", (req, res) => {
 // PATCH route for setting user as admin
 router.patch('/:id/set-as-admin', verify, verifyAdmin, userController.setAsAdmin);
 
-// PATCH route for updating the password
-router.patch('/update-password', verify, userController.updatePassword);
+// PATCH route for reseting the password
+router.patch('/reset-password', verify, userController.resetPassword);
+
+// Update user profile route
+router.put('/profile', verify, userController.updateProfile);
 
 //  Export Route System
 module.exports = router;
