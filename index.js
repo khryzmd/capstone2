@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const passport = require('passport');
 const session = require('express-session');
 require('./passport.js');
-// const cors = require("cors");
+const cors = require("cors");
 const userRoutes = require("./routes/user");
 const productRoutes = require("./routes/product");
 const cartRoutes = require("./routes/cart");
@@ -19,7 +19,7 @@ const app = express();
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-// app.use(cors());
+app.use(cors());
 
 // Google Login
 app.use(session({
