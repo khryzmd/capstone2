@@ -20,7 +20,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 const corsOptions = {		
-	origin: ["http://localhost:5173", "https://capstone3-sooty.vercel.app/" ],		
+	origin: ['http://localhost:5173', 'https://capstone3-sooty.vercel.app/',
+	'http://localhost:4003'],		
 	// methods: ["GET", "POST"],
 	// allowedHeaders: ["Content-Type", "Authorization"],
 	credentials: true,		
@@ -44,10 +45,10 @@ mongoose.connect(process.env.MONGODB_STRING);
 mongoose.connection.once('open', () => console.log("Now connected to MongoDB Atlas"));
 
 // Backend Routes
-app.use("b3/users", userRoutes);
-app.use("b3/products", productRoutes);
-app.use("b3/cart", cartRoutes);
-app.use("b3/orders", orderRoutes);
+app.use("/b3/users", userRoutes);
+app.use("/b3/products", productRoutes);
+app.use("/b3/cart", cartRoutes);
+app.use("/b3/orders", orderRoutes);
 
 // Server Gateway Response
 if(require.main === module) {
