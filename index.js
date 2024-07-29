@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 const corsOptions = {		
 	origin: ['http://localhost:5173', 'https://capstone3-sooty.vercel.app/',
-	'http://localhost:4003'],		
+	'http://localhost:4003', 'https://capstone3-khryzmds-projects.vercel.app/', 'https://capstone3-git-master-khryzmds-projects.vercel.app/', ],		
 	// methods: ["GET", "POST"],
 	// allowedHeaders: ["Content-Type", "Authorization"],
 	credentials: true,		
