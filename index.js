@@ -19,7 +19,15 @@ const app = express();
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cors());
+const corsOptions = {		
+	origin: ["http://localhost:5173", "https://capstone3-sooty.vercel.app/" ],		
+	// methods: ["GET", "POST"],
+	// allowedHeaders: ["Content-Type", "Authorization"],
+	credentials: true,		
+	// Provides a status code to use for successful OPTIONS request
+	optionsSuccessStatus: 200		
+}		
+app.use(cors(corsOptions));
 
 // Google Login
 app.use(session({
